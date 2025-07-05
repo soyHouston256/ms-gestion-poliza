@@ -1,0 +1,43 @@
+-- Crear tabla polizas
+CREATE TABLE polizas (
+    codigo_poliza INT AUTO_INCREMENT PRIMARY KEY,
+    codigo_persona INT NOT NULL,
+    numero_poliza VARCHAR(50) NOT NULL,
+    producto_codigo VARCHAR(50) NOT NULL,
+    producto_nombre VARCHAR(100) NOT NULL,
+    producto_descripcion VARCHAR(255) NOT NULL,
+    producto_categoria VARCHAR(100) NOT NULL
+);
+
+INSERT INTO polizas (codigo_poliza, codigo_persona, numero_poliza, producto_codigo, producto_nombre, producto_descripcion, producto_categoria) VALUES
+(10001, 1, 'POL001', 'PS001', 'Seguro Vehicular Todo Riesgo', 'Seguro vehicular con cobertura completa. Incluye GRATIS Yape de S/200 por compra online. Cobertura 100% online con protección integral para tu vehículo.', 'Vehicular'),
+(10002, 1, 'POL002', 'PS002', 'SOAT', 'Seguro Obligatorio de Accidentes de Tránsito. Disponible con descuento desde S/47. Evita multas y cumple con la normativa legal. Proceso 100% online.', 'Vehicular'),
+(10003, 2, 'POL003', 'PS003', 'Seguro de Vida con Devolución Total', 'Seguro de vida que devuelve el 100% de las primas pagadas. Incluye GRATIS Yape de S/150 + Parrilla Mr. Grill. Protección completa para tu familia.', 'Vida'),
+(10004, 3, 'POL004', 'PS004', 'Seguro de Salud', 'Cobertura médica integral con hasta 32% de descuento por tiempo limitado. Atención médica completa con red de clínicas y hospitales afiliados.', 'Salud'),
+(10005, 4, 'POL005', 'PS005', 'Seguro de Viajes', 'Protección completa para tus viajes. Incluye 50% descuento con Uber para viajes al aeropuerto + Vale de S/20. Cobertura nacional e internacional.', 'Viajes'),
+(10006, 5, 'POL006', 'PS006', 'Vida Inversión Capital', 'Producto de inversión en dólares en el extranjero según tu perfil de riesgo. Combina protección de vida con crecimiento de capital y diversificación internacional.', 'Vida'),
+(10007, 1, 'POL007', 'PS001', 'Seguro Vehicular Todo Riesgo', 'Seguro vehicular con cobertura completa. Incluye GRATIS Yape de S/200 por compra online. Cobertura 100% online con protección integral para tu vehículo.', 'Vehicular'),
+(10008, 6, 'POL008', 'PS003', 'Seguro de Vida con Devolución Total', 'Seguro de vida que devuelve el 100% de las primas pagadas. Incluye GRATIS Yape de S/150 + Parrilla Mr. Grill. Protección completa para tu familia.', 'Vida'),
+(10009, 7, 'POL009', 'PS005', 'Seguro de Viajes', 'Protección completa para tus viajes. Incluye 50% descuento con Uber para viajes al aeropuerto + Vale de S/20. Cobertura nacional e internacional.', 'Viajes'),
+(10010, 8, 'POL010', 'PS004', 'Seguro de Salud', 'Cobertura médica integral con hasta 32% de descuento por tiempo limitado. Atención médica completa con red de clínicas y hospitales afiliados.', 'Salud');
+
+
+
+CREATE TABLE policy_types (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    codigo VARCHAR(20) NOT NULL,
+    descripcion TEXT,
+    categoria VARCHAR(100) NOT NULL,
+    modalidad ENUM('Online', 'Asesoría', 'Ambas') DEFAULT 'Ambas',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO policy_types (nombre, codigo, descripcion, categoria, modalidad) VALUES
+('Seguro Vehicular Todo Riesgo',	'PS001',	'Seguro vehicular con cobertura completa. Incluye GRATIS Yape de S/200 por compra online. Cobertura 100% online con protección integral para tu vehículo.',	'Vehicular',	'Online'),
+('SOAT',	'PS002',	'Seguro Obligatorio de Accidentes de Tránsito. Disponible con descuento desde S/47. Evita multas y cumple con la normativa legal. Proceso 100% online.',	'Vehicular',	'Online'),
+('Seguro de Vida con Devolución Total',	'PS003',	'Seguro de vida que devuelve el 100% de las primas pagadas. Incluye GRATIS Yape de S/150 + Parrilla Mr. Grill. Protección completa para tu familia.',	'Vida',	'Online'),
+('Seguro de Salud',	'PS004',	'Cobertura médica integral con hasta 32% de descuento por tiempo limitado. Atención médica completa con red de clínicas y hospitales afiliados.',	'Salud',	'Asesoría'),
+('Seguro de Viajes',	'PS005',	'Protección completa para tus viajes. Incluye 50% descuento con Uber para viajes al aeropuerto + Vale de S/20. Cobertura nacional e internacional.',	'Viajes',	'Online'),
+('Vida Inversión Capital',	'PS006',	'Producto de inversión en dólares en el extranjero según tu perfil de riesgo. Combina protección de vida con crecimiento de capital y diversificación internacional.',	'Vida',	'Asesoría');
